@@ -2,7 +2,7 @@
 /*
  * GET home page.
  */
-
+var path = require('path');
 var Todo = require('../models/todo');
 
 module.exports = function (app) {
@@ -60,5 +60,9 @@ module.exports = function (app) {
     });
   });
 
+
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../views/index.html')); // load the single view file (angular will handle the page changes on the front-end)
+  });
 
 }
